@@ -220,13 +220,13 @@ jobs:
           fi
 
     - name: Upload
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         path: ./build/executionbackup*.*
         name: ${{ matrix.config.artifact }}
     
     - name: Upload Changelog
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         path: ./changelog.txt
         name: changelog.txt
@@ -239,7 +239,7 @@ jobs:
     steps:
 
     - name: Download Changelog Artifact
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v4
       with:
         name: changelog.txt
         path: ./
@@ -269,7 +269,7 @@ jobs:
     - name: Store Release url
       run: |
         echo "${{ steps.create_release.outputs.upload_url }}" > ./upload_url
-    - uses: actions/upload-artifact@v2
+    - uses: actions/upload-artifact@v4
       with:
         path: ./upload_url
         name: upload_url
@@ -298,13 +298,13 @@ jobs:
 
     steps:
     - name: Download artifact
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v4
       with:
         name: ${{ matrix.config.dlartifact }}
         path: ./
 
     - name: Download URL
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v4
       with:
         name: upload_url
         path: ./
